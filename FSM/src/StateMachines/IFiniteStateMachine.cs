@@ -1,14 +1,11 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
-using FSM.States;
 
-namespace FSM.StateMachines {
-    public interface IFiniteStateMachine<T> where T : IEntityState<T> {
-        Dictionary<Type, IEntityState<T>> States { get; }
-        IEntityState<T> CurrentState { get; }
-
+namespace KGC.FSM.StateMachines {
+    public interface IFiniteStateMachine<TState> {
+        Dictionary<Type, TState> States { get; }
+        TState CurrentState { get; }
         void InitializeStates();
-
-        void ChangeState(IEntityState<T> newState);
+        void ChangeState(TState newState);
     }
 }
